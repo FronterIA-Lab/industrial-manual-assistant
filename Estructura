@@ -1,0 +1,21 @@
+industrial-manual-assistant/
+├── README.md
+├── pyproject.toml
+├── docker-compose.yml
+├── src/
+│   ├── ingestion/
+│   │   ├── pdf_extractor.py     ← pymupdf4llm (ya lo usas en TEKTRON)
+│   │   └── manual_chunker.py    ← Chunking especial: respeta secciones del manual
+│   ├── retrieval/
+│   │   └── pipeline.py          ← FAISS + BM25 + CrossEncoder (tu stack exacto)
+│   ├── api/
+│   │   └── main.py              ← FastAPI: /query con response_model tipado
+│   └── schemas.py               ← Pydantic: Query, Source, ManualResponse
+├── app/
+│   └── gradio_app.py            ← UI simple: pregunta → respuesta + sección + página
+├── data/
+│   └── manuals/                 ← Siemens S7-1200 + Allen-Bradley Micro820 (públicos)
+├── docs/
+│   ├── architecture.png
+│   └── demo.gif                 ← GIF de 30s: consulta error → respuesta
+└── README.md
